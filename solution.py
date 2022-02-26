@@ -23,20 +23,20 @@ def smtp_client(port=1025, mailserver='127.0.0.1'):
     # Send HELO command and print server response.
     heloCommand = 'HELO Alice\r\n'
     clientSocket.send(heloCommand.encode())
-    recv_1 = clientSocket.recv(1024).decode()
+    recv1 = clientSocket.recv(1024).decode()
     #print(recv1) 
 
     # Send MAIL FROM command and handle server response.
     # Fill in start
     email_from = "MAIL FROM: <dam693@nyu.edu>\r\n"
     clientSocket.send(email_from.encode())
-    recv_2 = clientSocket.recv(1024).decode()
+    recv2 = clientSocket.recv(1024).decode()
     # Fill in end
 
     # Send RCPT TO command and handle server response.
     rcpt = "RCPT TO: <dam693@nyu.edu>\r\n"
     clientSocket.send(rcpt.encode())
-    recv_3 = clientSocket.recv(1024).decode()
+    recv3 = clientSocket.recv(1024).decode()
     # Fill in start
     # Fill in end
 
@@ -44,7 +44,7 @@ def smtp_client(port=1025, mailserver='127.0.0.1'):
     # Fill in start
     data = "DATA: \r\n"
     clientSocket.send(data.encode())
-    recv_4 = clientSocket.recv(1024).decode()
+    recv4 = clientSocket.recv(1024).decode()
     # Fill in end
 
     # Send message data.
