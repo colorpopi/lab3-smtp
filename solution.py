@@ -11,7 +11,7 @@ def smtp_client(port=1025, mailserver='127.0.0.1'):
 
     # Create socket called clientSocket and establish a TCP connection with mailserver and port
     clientSocket = socket(AF_INET, SOCK_STREAM)
-    clientSocket.connect(mail_server)
+    clientSocket.connect((mailserver, port))
     # Fill in start
     # Fill in end
 
@@ -42,7 +42,7 @@ def smtp_client(port=1025, mailserver='127.0.0.1'):
 
     # Send DATA command and handle server response.
     # Fill in start
-    data = "DATA:\r\n"
+    data = "DATA: \r\n"
     clientSocket.send(data.encode())
     recv_4 = clientSocket.recv(1024).decode()
     # Fill in end
@@ -60,7 +60,7 @@ def smtp_client(port=1025, mailserver='127.0.0.1'):
     # Fill in end
 
     # Send QUIT command and handle server response.
-    clientSocket.send("QUIT\r\n".encode())
+    clientSocket.send("QUIT \r\n".encode())
     quit_msg = clientSocket.recv(1024.decode())
     clientSocket.close()
     # Fill in start
